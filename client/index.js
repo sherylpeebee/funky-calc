@@ -1,39 +1,42 @@
 'use strict';
 $(document).ready(init);
 
+
 function init(){
-  $('#stack').click(getValue);
+  $(document).keypress(calc.getValue);
 }
 
-var numbers = [];
-var inputString;
+var calc = {};
 
-function getValue(){
+calc.numbers = [];
+console.log(calc.numbers);
 
-  inputString = $('#window').val();
-  $('#window').val('');
 
-  if (inputString === '+'){
-    // console.log('plus');
+ calc.getValue = function(event){
+
+
+   calc.inputString = String.fromCharCode(event.which);
+   var inputNumber = parseInt(calc.inputString);
+
+  if (calc.inputString === '+'){
     sum();
 
-    } else if (inputString === '*'){
+  } else if (calc.inputString === '*'){
       multiply();
 
-      } else if (inputString === '-'){
+    } else if (calc.inputString === '-'){
         subtract();
 
-      } else if (inputString === '/'){
+      } else if (calc.inputString === '/'){
             divide();
 
       }else {
-        var inputNumber = parseInt(inputString);
-        console.log(inputNumber);
-        numbers.push(inputNumber);
+        calc.numbers.push(inputNumber);
 
-        $('.container > div').text('');
 
-        numbers.forEach(function(n){
+        $('.container').empty();
+
+        calc.numbers.forEach(function(n){
           var $div = $('<div>');
           $div.text(n);
           $('.container').append($div);
@@ -41,10 +44,10 @@ function getValue(){
 
       });
     }
-  }
+  };
 
   function divide(){
-    var quotient = numbers.reduce(function(a, b){
+    var quotient = calc.numbers.reduce(function(a, b){
       return a / b;
       });
       var $quotientDiv = $('<div>');
@@ -53,7 +56,7 @@ function getValue(){
   }
 
   function subtract(){
-    var difference = numbers.reduce(function(a, b){
+    var difference = calc.numbers.reduce(function(a, b){
       return a - b;
       });
       var $differenceDiv = $('<div>');
@@ -63,7 +66,7 @@ function getValue(){
 
   function sum(){
 
-    var addedUp = numbers.reduce(function(a, b){
+    var addedUp = calc.numbers.reduce(function(a, b){
       return a + b;
       });
       console.log(addedUp);
@@ -73,7 +76,7 @@ function getValue(){
    }
 
    function multiply(){
-     var product = numbers.reduce(function(a, b){
+     var product = calc.numbers.reduce(function(a, b){
        return a * b;
        });
        var $productDiv = $('<div>');
@@ -82,8 +85,6 @@ function getValue(){
   }
 
 
-
-    // $('.container').text(numbers);
 
 
 
