@@ -1,14 +1,21 @@
 doctype html
 html
   head
-    meta(charset='utf-8')      
+    meta(charset='utf-8')
     title Apollo
     link(rel='stylesheet', href='/vendor/font-awesome/css/font-awesome.min.css')
     link(rel='stylesheet', href=isProd ? '/index.min.css' : '/index.css')
     link(rel='shortcut icon', href='/favicon.ico')
   body
-    img#apollo(src='/assets/apollo.jpg')
-    h1#title Apollo
+    h1 Funky Calc
+    
+    div#main
+      input#window
+      button#stack(name='stack' type='submit' value='submit')
+      div.container
 
+    
+
+    script(src='/vendor/jquery/dist/jquery.min.js')
     script(src='/vendor/lodash/lodash.min.js')
     script(src=isProd ? '/index.min.js' : '/index.js')
