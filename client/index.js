@@ -10,15 +10,14 @@ var inputString;
 
 function getValue(){
 
-  if (inputString === '+'){
-    numbers.pop();
-    console.log('plus');
-    sum();
-  } else {
-
   inputString = $('#window').val();
   $('#window').val('');
-  // console.log(input);\
+
+  if (inputString === '='){
+    // console.log('plus');
+    sum();
+
+  } else {
   var inputNumber = parseInt(inputString);
   console.log(inputNumber);
   numbers.push(inputNumber);
@@ -35,6 +34,7 @@ function getValue(){
 }
 }
 function sum(){
+  debugger;
 
 var addedUp = numbers.reduce(function(a, b){
     return a + b;
